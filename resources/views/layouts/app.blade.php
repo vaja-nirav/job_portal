@@ -3,67 +3,90 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Job Update Portal')</title>
+    <title>@yield('title', 'Job Portal - Find Your Dream Career')</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
 </head>
-<body class="antialiased bg-slate-50 text-slate-800">
+<body class="antialiased bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex">
-                    <div class="shrink-0 flex items-center">
-                        <a href="{{ route('home') }}" class="text-2xl font-bold text-indigo-600">JobPortal</a>
-                    </div>
-                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8 ml-auto">
-                        <a href="{{ route('home') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300">Home</a>
-                        <a href="{{ route('jobs.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300">All Jobs</a>
-                        <a href="{{ route('jobs.index', ['category' => 'Government Jobs']) }}" class="hidden lg:inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300">Latest Jobs</a>
-                        <a href="{{ route('jobs.index', ['category' => 'IT Jobs']) }}" class="hidden lg:inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300">Job Types</a>
-                        <a href="{{ route('jobs.index', ['category' => 'Bank Jobs']) }}" class="hidden lg:inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300">Qualifications</a>
-                    </div>
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <a href="{{ route('home') }}" class="flex items-center gap-2 text-2xl font-extrabold text-blue-700 tracking-tight">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M20 7h-4V5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v2H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V9c0-1.103-.897-2-2-2zm-10-2h4v2h-4V5zm10 14H4V9h16v10z"/></svg>
+                        JobFinder
+                    </a>
+                </div>
+                
+                <div class="hidden lg:flex space-x-1 items-center">
+                    <a href="{{ route('home') }}" class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Home</a>
+                    <a href="{{ route('jobs.index') }}" class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">All Jobs</a>
+                    <a href="{{ route('jobs.index') }}" class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Latest Jobs</a>
+                    <a href="{{ route('jobs.index') }}" class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Job Types</a>
+                    <a href="{{ route('jobs.index') }}" class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Qualification</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main>
+    <!-- Main Content -->
+    <main class="flex-grow">
         @yield('content')
     </main>
 
-    <footer class="bg-slate-900 text-white py-12 mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-                <h3 class="text-xl font-bold mb-4">JobPortal</h3>
-                <p class="text-slate-400">Your number one source for the latest job updates and notifications.</p>
+    <!-- Footer -->
+    <footer class="bg-gray-900 pt-16 pb-8 text-gray-300 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <a href="{{ route('home') }}" class="flex items-center gap-2 text-2xl font-extrabold text-white tracking-tight mb-4">
+                        <svg class="w-8 h-8 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M20 7h-4V5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v2H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V9c0-1.103-.897-2-2-2zm-10-2h4v2h-4V5zm10 14H4V9h16v10z"/></svg>
+                        JobFinder
+                    </a>
+                    <p class="text-gray-400 mb-6 max-w-sm">We connect the best talent with top companies and government sectors. Start your journey today.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="{{ route('jobs.index') }}" class="hover:text-blue-400 transition">Find Jobs</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Contact Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Job Alerts</h3>
+                    <form action="{{ route('subscribe') }}" method="POST" class="mt-2">
+                        @csrf
+                        <div class="flex">
+                            <input type="email" name="email" required placeholder="Enter your email" class="w-full px-4 py-2.5 rounded-l-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-blue-500 @error('email') border-red-500 @enderror">
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-500 px-4 py-2.5 rounded-r-lg font-bold transition text-white">Subscribe</button>
+                        </div>
+                        @if(session('success'))
+                            <p class="text-green-400 text-xs mt-2 font-medium">{{ session('success') }}</p>
+                        @endif
+                        @error('email')
+                            <p class="text-red-400 text-xs mt-2">{{ $message }}</p>
+                        @enderror
+                    </form>
+                </div>
             </div>
-            <div>
-                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-                <ul class="space-y-2 text-slate-400">
-                    <li><a href="#" class="hover:text-white transition">About Us</a></li>
-                    <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
-                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-xl font-bold mb-4">Subscribe for Updates</h3>
-                <form class="flex" action="{{ route('subscribe') }}" method="POST">
-                    @csrf
-                    <input type="email" name="email" placeholder="Your Email" required class="px-4 py-2 w-full rounded-l-md text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 @error('email') border-red-500 @enderror">
-                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-r-md transition">Subscribe</button>
-                </form>
-                @if(session('success'))
-                    <p class="text-emerald-400 text-sm mt-2 font-medium">{{ session('success') }}</p>
-                @endif
-                @error('email')
-                    <p class="text-red-400 text-sm mt-2">{{ $message }}</p>
-                @enderror
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; {{ date('Y') }} JobFinder. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
+
 </body>
 </html>
