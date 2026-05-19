@@ -41,6 +41,10 @@ class JobPostingResource extends Resource
                     ]),
 
                     \Filament\Schemas\Components\Section::make('Dynamic Data')->schema([
+                        Forms\Components\Repeater::make('overviews')->schema([
+                            Forms\Components\TextInput::make('label')->required(),
+                            Forms\Components\TextInput::make('value')->required(),
+                        ])->columns(2),
                         Forms\Components\Repeater::make('Important_Dates')->schema([
                             Forms\Components\TextInput::make('event')->required(),
                             Forms\Components\TextInput::make('date')->required(),
@@ -51,9 +55,13 @@ class JobPostingResource extends Resource
                         ])->columns(2),
                         Forms\Components\Repeater::make('Vacancy_Details')->schema([
                             Forms\Components\TextInput::make('post_name')->required(),
-                            Forms\Components\TextInput::make('vacancies')->numeric()->required(),
+                            Forms\Components\TextInput::make('vacancies')->required(),
                             Forms\Components\TextInput::make('qualification')->required(),
                         ])->columns(3),
+                        Forms\Components\Repeater::make('FAQs')->schema([
+                            Forms\Components\TextInput::make('question')->required(),
+                            Forms\Components\Textarea::make('answer')->required(),
+                        ])->columns(1),
                     ]),
                 ])->columnSpan(['lg' => 2]),
 
